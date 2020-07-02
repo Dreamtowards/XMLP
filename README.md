@@ -17,21 +17,21 @@ Output:
     <b>Some of Texts</b>
 </ele1>
 ```
-### Create a XML element From a InputStream. (can from ByteArray, Network, File, even Zip_Entry lmao)(String content)
-testxml.xml File:
+### Create a XML element From a InputStream. (String content)
+File testxml.xml:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <?txt some texts?>
-<!-- cmts -->
+<!-- commts -->
 
-<RootEle attr1key="value1" attr2k="v2" xmlns:tstNs="http://tstns.example.com">
+<RootEle xmlns:tstNs="http://tstns.example.com" attr1key="value1" attr2k="v2" >
 
     <emptybodyele1></emptybodyele1>
     <emptybodyele2/>
     <emptybodyHadAttrEle1WithEscpAttrValue tstNs:attr1="valueWithEscp<>&apos;&quot;&amp;"/>
 
     <elep>
-        <!-- cmts -->
+        <!-- commts1 -->
         <jusTxtBodyEle>Some of Text</jusTxtBodyEle>
         <jusTxtBodyEle2WithMulLine>
             Some of Text2
@@ -42,12 +42,33 @@ testxml.xml File:
 Some Text <>&'" In CDATA -only for input.
 ]]>
         </CDATABodyTest>
-        <!-- cmts2 -->
+        <!-- commts2 -->
     </elep>
 
 </RootEle>
 ```
 ```java
+  XML tn2 = new XML(new FileInputStream("testxml.xml"));
+  System.out.println(tn2.toString(2));
+
+  System.out.println("attrs: "+tn2.getChildren().get(2).getAttributes());
+```
+Output:
+```
+<RootEle attr2k="v2" attr1key="value1" xmlns:tstNs="http://tstns.example.com">
+  <emptybodyele1/>
+  <emptybodyele2/>
+  <emptybodyHadAttrEle1WithEscpAttrValue tstNs:attr1="valueWithEscp&lt;&gt;&apos;&quot;&amp;"/>
+  <elep>
+    <jusTxtBodyEle>Some of Text</jusTxtBodyEle>
+    <jusTxtBodyEle2WithMulLine>Some of Text2
+            And MulLine</jusTxtBodyEle2WithMulLine>
+    <CDATABodyTest>
+Some Text &lt;&gt;&amp;&apos;&quot; In CDATA -only for input.
+</CDATABodyTest>
+  </elep>
+</RootEle>
+attrs: {tstNs:attr1=valueWithEscp<>'"&}
 ```
 
 ## Supports
