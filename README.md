@@ -71,8 +71,4 @@ attrs: {tstNs:attr1=valueWithEscp<>'"&}
 
 ## Supports
 
-### CDATA
 
-### <!--- Comments -->
-
-### <? Processing Instructions ?>
