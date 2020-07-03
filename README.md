@@ -1,3 +1,5 @@
+## Copyrights Declarations
+This is produced From OTS/UtilS Lib. as a Open, Semi-Independent Term.
 
 # Getting start
 
