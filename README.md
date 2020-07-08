@@ -71,9 +71,3 @@ Some Text &lt;&gt;&amp;&apos;&quot; In CDATA -only for input.
 attrs: {tstNs:attr1=valueWithEscp<>'"&}
 ```
 
-## Supports
-
-## Who Uses OTS/UtilS XMLP.?
-
-- DaeLoader
-
